@@ -8,7 +8,7 @@ var clickedCoord_lineString = []
 
 
 var view =  new ol.View({
-    center:[4434288.936162015, 4825488.5058124615],
+    center:[4000000, 4825488.5058124615],
     zoom:6
     })
 
