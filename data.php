@@ -1,3 +1,4 @@
+<?php include_once("home.html"); ?>
 <?php
 include 'db.php';
 
