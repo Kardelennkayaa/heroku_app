@@ -206,6 +206,7 @@ function SaveDatatodb(){
                 }
             }
         })
+        alert('Point is added')
     } else {
         alert('Please fill complete information')
     }
@@ -246,6 +247,7 @@ function SaveDatatodb_lineString(){
                 }
             }
         })
+        alert('LineString is added')
     } else {
         alert('Please fill complete information')
     }
