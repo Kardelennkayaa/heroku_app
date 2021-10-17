@@ -27,7 +27,7 @@ The requirement informations should be entered to sign up. When the account is c
 - The region option can be choosen as you want (United States or Europe).
 Finally the app is created. 
 3. Created Heroku App can be found from as follows :
-- (C:\Users\kfyka\OneDrive\Masaüstü\location_images\dashboard_img.png "Dashboard")
+- (https://ibb.co/mJCyNpL "Dashboard")
 4.
 5.
 
