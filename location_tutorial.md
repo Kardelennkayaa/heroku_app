@@ -28,6 +28,7 @@ The requirement informations should be entered to sign up. When the account is c
 Finally the app is created. 
 3. Created Heroku App can be found from as follows :
 ![Dashboard](dashboard_img.png)
+
 4.
 5.
 
