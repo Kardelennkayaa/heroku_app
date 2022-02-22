@@ -33,14 +33,14 @@ var point_loc = new ol.layer.Image({
      
   });
 
-  var lineString_loc = new ol.layer.Image({
-    source: new ol.source.ImageWMS({
-    url: 'http://localhost:8081/geoserver/Final_project/wms',
-    params: {'LAYERS': 'Final_project:stations'},
-    serverType: 'geoserver'
-    }),
+  //var lineString_loc = new ol.layer.Image({
+    //source: new ol.source.ImageWMS({
+    //url: 'http://localhost:8081/geoserver/Final_project/wms',
+    //params: {'LAYERS': 'Final_project:stations'},
+    //serverType: 'geoserver'
+    //}),
      
-  });
+  //});
 
 var map = new ol.Map({
     target : 'mymap',
@@ -48,7 +48,7 @@ var map = new ol.Map({
     layers: layerArray
 })
 map.addLayer(point_loc)
-map.addLayer(lineString_loc)
+//map.addLayer(lineString_loc)
 
 
 //  1. To define a source
