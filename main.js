@@ -25,11 +25,11 @@ var layerArray = [basemapLayer]
 
 var point_loc = new ol.layer.Image({
     //extent: [32.2239365933473394,38.21116254212740415, 35.30144967969213354,40.16835288212738675],
-    extent: [3788955,4765554],
+    
     source: new ol.source.ImageWMS({
     url: 'https://wms.qgiscloud.com/Kardelen/kaman_roadss/',
-    //params: {'LAYERS': 'Final_project:minibus_stations'},
-    //serverType: 'geoserver'
+    params: {'LAYERS': 'kaman_roadss'},
+    serverType: 'qgiscloud'
     }),
      
   });
