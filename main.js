@@ -28,7 +28,7 @@ var point_loc = new ol.layer.Image({
     
     source: new ol.source.ImageWMS({
     url: 'https://wms.qgiscloud.com/Kardelen/kaman_roadss/',
-    //params: {'LAYERS': 'kaman_roadss'},
+    params: {'LAYERS': 'kaman_roadss'},
     //serverType: 'qgiscloud'
     }),
      
