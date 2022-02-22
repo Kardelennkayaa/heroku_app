@@ -24,8 +24,6 @@ var layerArray = [basemapLayer]
 // Initiating Map
 
 var point_loc = new ol.layer.Image({
-    extent: [-13884991, 2870341, -7455066, 6338219],
-    
     source: new ol.source.ImageWMS({
     url: 'https://wms.qgiscloud.com/Kardelen/kaman_roadss/',
     params: {'LAYERS': 'kaman_roads'},
