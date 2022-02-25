@@ -49,6 +49,14 @@ var map = new ol.Map({
 map.addLayer(point_loc)
 //map.addLayer(lineString_loc)
 
+const vector = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    url: 'https://raw.githubusercontent.com/Kardelennkayaa/ankr_tdelay/main/KAMAN.json',
+    format: new ol.format.GeoJSON(),
+  }),
+  background: 'white',
+});
+
 
 //  1. To define a source
 var drawSource = new ol.source.Vector()
