@@ -24,22 +24,14 @@ var layerArray = [basemapLayer]
 // Initiating Map
 
 var point_loc = new ol.layer.Image({
-    source: new ol.source.ImageWMS({
-    url: 'https://wms.qgiscloud.com/Kardelen/kaman_roadss/',
-    params: {'LAYERS': 'kaman_roads'},
-    //serverType: 'qgiscloud'
-    }),
-     
-  });
+  source: new ol.source.ImageWMS({
+  url: 'https://wms.qgiscloud.com/Kardelen/kaman_roadss/',
+  params: {'LAYERS': 'kaman_roads'},
+  //serverType: 'qgiscloud'
+  }),
+   
+});
 
-  //var lineString_loc = new ol.layer.Image({
-    //source: new ol.source.ImageWMS({
-    //url: 'http://localhost:8081/geoserver/Final_project/wms',
-    //params: {'LAYERS': 'Final_project:stations'},
-    //serverType: 'geoserver'
-    //}),
-     
-  //});
 
 var map = new ol.Map({
     target : 'mymap',
@@ -47,24 +39,69 @@ var map = new ol.Map({
     layers: layerArray
 })
 map.addLayer(point_loc)
-//map.addLayer(lineString_loc)
 
-const vector = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    url: 'https://raw.githubusercontent.com/Kardelennkayaa/ankr_tdelay/main/KAMAN.json',
-    format: new ol.format.GeoJSON(),
-  }),
+
+
+var drawSource_ls = new ol.source.Vector({
+  url: 'https://raw.githubusercontent.com/Kardelennkayaa/ankr_tdelay/main/KAMAN.json',
+  format: new ol.format.GeoJSON(),
+});
+
+var vector = new ol.layer.Vector({
+  source: drawSource_ls,
   background: 'white',
 });
+map.addLayer(vector)
+
+
+
+
+map.addInteraction(
+  new ol.interaction.Snap({
+    source: drawSource_ls,
+  })
+);
+
+
+
+const selectStyle = new ol.style.Style({
+  fill: new ol.style.Fill({
+    color: '#eeeeee',
+  }),
+  stroke: new ol.style.Stroke({
+    color: 'rgba(255, 255, 255, 0.7)',
+    width: 2,
+  }),
+});
+
+
+const status = document.getElementById('status');
+let selected = null;
+map.on('pointermove', function (e) {
+  if (selected !== null) {
+    selected.setStyle(undefined);
+    selected = null;
+  }
+
+  map.forEachFeatureAtPixel(e.pixel, function (f) {
+    selected = f;
+    selectStyle.getFill().setColor(f.get('COLOR') || '#eeeeee');
+    f.setStyle(selectStyle);
+    return true;
+  });
+
+  if (selected) {
+    status.innerHTML = selected.get('ECO_NAME');
+  } else {
+    status.innerHTML = '&nbsp;';
+  }
+});
+
+
 
 
 //  1. To define a source
 var drawSource = new ol.source.Vector()
-var drawSource_ls = new ol.source.Vector()
-// 2. To Define a style
-// Skip it and let the OL use default styling
-// 3. To Define a Layer
-
 
 
 var drawLayer = new ol.layer.Vector({
@@ -85,6 +122,10 @@ var drawLayer = new ol.layer.Vector({
         }),
     })      
 })
+
+
+
+
 // 4. Adding on map
 map.addLayer(drawLayer)
 
@@ -184,7 +225,7 @@ drawSource_ls.on('change', function() {
   download.href = 'data:text/json;charset=utf-8,' + json;
 });
 
-// Save data from form to database
+
 
 function SaveDatatodb(){
     var location = document.getElementById('location').value;
