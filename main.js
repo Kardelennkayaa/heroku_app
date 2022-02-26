@@ -194,7 +194,7 @@ var draw_lineString = new ol.interaction.Draw({
     source:drawSource_ls
 })
 draw_lineString.on('drawstart', function(evt){
-    drawSource_ls.clear()
+    //drawSource_ls.clear()
 })
 draw_lineString.on('drawend',function(evt){
     // alert('point is added')
