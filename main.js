@@ -42,23 +42,22 @@ map.addLayer(point_loc)
 
 
 
-var drawSource_ls = new ol.source.Vector({
+
+var jsonSource = new ol.source.Vector({
   url: 'https://raw.githubusercontent.com/Kardelennkayaa/ankr_tdelay/main/KAMAN.json',
   format: new ol.format.GeoJSON(),
 });
 
 var vector = new ol.layer.Vector({
-  source: drawSource_ls,
+  source: jsonSource,
   background: 'white',
 });
 map.addLayer(vector)
 
-
-
-
 map.addInteraction(
   new ol.interaction.Snap({
-    source: drawSource_ls,
+    source: jsonSource,
+    //pixelTolerance: 50,
   })
 );
 
@@ -102,6 +101,7 @@ map.on('pointermove', function (e) {
 
 //  1. To define a source
 var drawSource = new ol.source.Vector()
+var drawSource_ls = new ol.source.Vector()
 
 
 var drawLayer = new ol.layer.Vector({
@@ -194,7 +194,7 @@ var draw_lineString = new ol.interaction.Draw({
     source:drawSource_ls
 })
 draw_lineString.on('drawstart', function(evt){
-    //drawSource_ls.clear()
+    drawSource_ls.clear()
 })
 draw_lineString.on('drawend',function(evt){
     // alert('point is added')
