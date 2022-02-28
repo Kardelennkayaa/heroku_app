@@ -225,6 +225,10 @@ drawSource_ls.on('change', function() {
   download.href = 'data:text/json;charset=utf-8,' + json;
 });
 
+function visualize() {
+  location.replace("https://visualizelocation.herokuapp.com/")
+}
+
 
 
 function SaveDatatodb(){
