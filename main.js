@@ -191,7 +191,11 @@ map.addInteraction(draw)
 // Adding LineString
 var draw_lineString = new ol.interaction.Draw({
     type : 'LineString',
-    source:drawSource_ls
+    //source:drawSource_ls
+    source: new ol.source.GeoJSON({
+      //projection : 'EPSG:3857',
+      url: 'https://raw.githubusercontent.com/Kardelennkayaa/ankr_tdelay/main/KAMAN.json'
+   })
 })
 draw_lineString.on('drawstart', function(evt){
     drawSource_ls.clear()
