@@ -60,6 +60,37 @@ map.addInteraction(
     //pixelTolerance: 50,
   })
 );
+var jsonSource_ank = new ol.source.Vector({
+  url: 'https://raw.githubusercontent.com/Kardelennkayaa/heroku_app/main/ankara_road.json',
+  format: new ol.format.GeoJSON(),
+});
+
+var vector_ank = new ol.layer.Vector({
+  source: jsonSource_ank,
+  background: 'white',
+});
+map.addLayer(vector_ank)
+
+map.addInteraction(
+  new ol.interaction.Snap({
+    source: jsonSource_ank,
+    //pixelTolerance: 50,
+  })
+);
+//var modify = new ol.interaction.Modify({
+  //source: jsonSource
+//});
+//map.addInteraction(modify);
+
+var modify = new ol.interaction.Modify({
+  source: jsonSource
+});
+map.addInteraction(modify);
+
+var modify_ank = new ol.interaction.Modify({
+  source: jsonSource_ank
+});
+map.addInteraction(modify_ank);
 
 
 
@@ -191,10 +222,12 @@ map.addInteraction(draw)
 // Adding LineString
 var draw_lineString = new ol.interaction.Draw({
     type : 'LineString',
-    source:drawSource_ls
+    //source:drawSource_ls
+    source:jsonSource
 })
 draw_lineString.on('drawstart', function(evt){
     drawSource_ls.clear()
+    //select.setActive(true);
 })
 draw_lineString.on('drawend',function(evt){
     // alert('point is added')
@@ -207,6 +240,8 @@ draw_lineString.on('drawend',function(evt){
 
 function startDrawing_lineString(){
 // add interaction to the map
+
+
 map.addInteraction(draw_lineString)
 }
 
