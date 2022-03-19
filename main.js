@@ -223,12 +223,14 @@ map.addInteraction(draw)
 var draw_lineString = new ol.interaction.Draw({
     type : 'LineString',
     source:drawSource_ls
- 
 })
+
+
 draw_lineString.on('drawstart', function(evt){
     drawSource_ls.clear()
     //select.setActive(true);
 })
+
 draw_lineString.on('drawend',function(evt){
     // alert('point is added')
     clickedCoord_lineString = evt.feature.getGeometry().getCoordinates()
