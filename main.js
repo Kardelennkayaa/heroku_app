@@ -222,8 +222,8 @@ map.addInteraction(draw)
 // Adding LineString
 var draw_lineString = new ol.interaction.Draw({
     type : 'LineString',
-    //source:drawSource_ls
-    source:jsonSource
+    source:drawSource_ls
+    
 })
 draw_lineString.on('drawstart', function(evt){
     drawSource_ls.clear()
