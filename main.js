@@ -368,7 +368,7 @@ draw_json.on('drawend',function(evt){
   //clickedCoord_json = evt.feature.getGeometry().getCoordinates() 
   json_list.push(evt.feature.getGeometry().getCoordinates())
   console.log('clicked at', json_list )
-  window.addEventListener('dblclick', (event) => {
+  window.addEventListener('contextmenu', (event) => {
     $('#json_adding').modal('show')
   })
   
@@ -440,6 +440,7 @@ function SaveDatatodb(){
     var lat = clickedCoord_lonlat[1];
     var minibus_name = document.getElementById('minibus_name').value;
     if (location != '' && recorder != '' && long != '' && lat != '' && minibus_name != '' ){
+      $('#pointadding').modal('hide');
         $.ajax({
             url:'save.php',
             type:'POST',
@@ -454,7 +455,7 @@ function SaveDatatodb(){
                 var dataResult = JSON.stringify(dataResult);
                 if (dataResult.statusCode == 200){
                     
-                    $('#pointadding').modal('hide');
+                    //$('#pointadding').modal('hide');
                 } else {
                     
                 }
@@ -479,9 +480,10 @@ function SaveDatatodb_lineString(){
     var json = format.writeFeaturesObject(featureArray);
     var geojsonFeatureArray = json.features
     var geom = JSON.stringify(geojsonFeatureArray[0].geometry)
-    alert(geom)
+    //alert(geom)
     var minibus_name = document.getElementById('minibus_name_ls').value;
     if (location != '' && recorder != '' && geom != '' &&  minibus_name != '' &&  distance != '')   {
+      $('#ls_adding').modal('hide');
         $.ajax({
             url:'save_ls.php',
             type:'POST',
@@ -496,7 +498,7 @@ function SaveDatatodb_lineString(){
                 var dataResult2 = JSON.stringify(dataResult2);
                 if (dataResult2.statusCode == 200){
                     
-                    $('#ls_adding').modal('hide');
+                    //$('#ls_adding').modal('hide');
                 } else {
                     
                 }
@@ -513,7 +515,7 @@ function SaveDatatodb_lineString(){
 function SaveDatatodb_json(){
   //json_list.reverse();
   var polyline = new ol.geom.LineString(json_list.reverse());
-  alert(json_list.reverse())
+  //alert(json_list.reverse())
   //polyline.transform('EPSG:4326', 'EPSG:3857');
   var feature = new ol.Feature(polyline);
 
@@ -522,7 +524,7 @@ function SaveDatatodb_json(){
   source.addFeature(feature);
   var feature = source.getFeatures();
   var distance = ol.sphere.getLength(polyline);
-  alert(distance)
+  //alert(distance)
   var format = new ol.format.GeoJSON();
   var featureArray = source.getFeatures()
   var json = format.writeFeaturesObject(featureArray);
@@ -537,6 +539,7 @@ function SaveDatatodb_json(){
   var minibus_name = document.getElementById('minibus_name_json').value;
 
   if (location != '' && recorder != '' && geom != '' &&  minibus_name != '' &&  distance != '')   {
+    $('#json_adding').modal('hide');
         $.ajax({
             url:'save_ls.php',
             type:'POST',
@@ -551,7 +554,7 @@ function SaveDatatodb_json(){
                 var dataResult3 = JSON.stringify(dataResult3);
                 if (dataResult3.statusCode == 200){
                     
-                    $('#json_adding').modal('hide');
+                    //$('#json_adding').modal('hide');
                 } else {
                     
                 }
@@ -598,18 +601,19 @@ function SaveDatatodb_route(){
     geom_list.push(geom_str);
     geom += geom_list[j]
   };
-  alert(distance)
+  //alert(distance)
   
   //var geom = JSON.stringify(geojsonFeatureArray[geojsonFeatureArray.length-1].geometry)
   
   var geom = geom.replaceAll(']}{"type":"LineString","coordinates":[', ',');
   //var geom = newKey.replace(/]]/gi, ']');
-  alert(geom)
+  //alert(geom)
   var location = document.getElementById('location_route').value;
   var recorder = document.getElementById('recorder_route').value;
   var minibus_name = document.getElementById('minibus_name_route').value;
 
   if (location != '' && recorder != '' && geom != '' &&  minibus_name != '' &&  distance != '')   {
+    $('#route_adding').modal('hide')
         $.ajax({
             url:'save_ls.php',
             type:'POST',
@@ -624,7 +628,7 @@ function SaveDatatodb_route(){
                 var dataResult3 = JSON.stringify(dataResult3);
                 if (dataResult3.statusCode == 200){
                     
-                    $('#route_adding').modal('hide');
+                    //$('#route_adding').modal('hide');
                 } else {
                     
                 }
