@@ -1,9 +1,9 @@
 <?php
 
-$server = 'ec2-52-73-149-159.compute-1.amazonaws.com';
-$username = 'qsdefbsjuutnav';
-$password = '5c313ea9744c5f77eb74735793555027639f5e3d23301d69db9a57b9d861a959';
-$db_name = 'd3epg3noqco662';
+$server = 'ec2-52-54-212-232.compute-1.amazonaws.com';
+$username = 'kxwxbmuahnnikn';
+$password = 'ff113b7ac0086745ee43338d88a8327aa6a6a1b85fa7e4be36a3585ebd5a1a89';
+$db_name = 'dflklgpisre29b';
 
 $dbcon = pg_connect("host=$server port=5432 dbname=$db_name user=$username password=$password")
 
